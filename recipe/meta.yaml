@@ -1,5 +1,5 @@
 {% set name = "afwizard" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/afwizard-{{ version }}.tar.gz
-  sha256: 904541e4d06f2cba2bb50ffe1716970786d132c9d6506ead009e617c19b6009e
+  sha256: ba45a2bd98ca813ae4ec1073f921d78e5d4452f54d1a9fec58ed6d0f86292e3e
 
 build:
   entry_points:
@@ -17,12 +17,13 @@ build:
     - upgrade_filter_library = afwizard.library:upgrade_filter_library
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - afwizard-library
     - click
